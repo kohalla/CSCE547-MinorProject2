@@ -1,0 +1,29 @@
+﻿<Page x:Class="TaskScheduler.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskScheduler"
+      mc:Ignorable="d" 
+		d:DesignHeight="450" d:DesignWidth="800"
+	  Title="SettingsPage"
+	  Background="{DynamicResource WindowBackgroundBrush}"
+	  Foreground="{DynamicResource PrimaryTextBrush}">
+
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="2*"/>
+		</Grid.RowDefinitions>
+		<Label Content="Settings" Foreground="{DynamicResource PrimaryTextBrush}"  FontSize="{DynamicResource HeadingFontSize}" FontWeight="Bold"/>
+		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+		<Label Content="Light Mode (Unfilled)" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="{DynamicResource Accent2Brush}" Margin="30,0,30,0"/>
+		<ToggleButton x:Name="ThemeToggle" Checked="ThemeToggle_Checked" Unchecked="ThemeToggle_Unchecked" Width="25" Foreground="{DynamicResource PrimaryTextBrush}"/>
+		<Label Content="Dark Mode (Filled)" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="{DynamicResource PrimaryTextBrush}" Margin="30,0,30,0"/>
+		</StackPanel>
+		
+
+    </Grid>
+</Page>

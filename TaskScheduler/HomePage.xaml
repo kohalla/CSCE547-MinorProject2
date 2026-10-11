@@ -1,0 +1,140 @@
+﻿<Page x:Class="TaskScheduler.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskScheduler"
+      mc:Ignorable="d" 
+		d:DesignHeight="450" d:DesignWidth="800"
+	  Title="HomePage"
+	  Background="{DynamicResource WindowBackgroundBrush}"
+	  Foreground="{DynamicResource PrimaryTextBrush}">
+
+   
+	<Grid >
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="25" />
+			<ColumnDefinition Width="237*"/>
+			<ColumnDefinition Width="262*" />
+			<ColumnDefinition Width="262*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="3*" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="1*" />
+			<RowDefinition Height="1*" />
+		</Grid.RowDefinitions>
+
+		<!-- Username-->
+		<!--Label Content="Username Here" Grid.Column="0" Grid.Row="0" FontSize="16" FontWeight="Medium" Grid.ColumnSpan="2" Margin="0,0,0,40" Grid.RowSpan="2" /-->
+		<!--TextBlock x:Name="username" Grid.Column="0" Grid.Row="0" FontSize="16" FontWeight="Medium" Grid.ColumnSpan="2" Margin="0,0,0,40" Grid.RowSpan="2"/-->
+		<Label x:Name="username" Grid.Column="0" Grid.Row="0" FontSize="{DynamicResource BodyFontSize}" FontWeight="Medium" Grid.ColumnSpan="2" Margin="0,0,0,0" BorderThickness="5,5,5,5" Height="55" Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+		<!-- labels -->
+		<Label Content="Goals" Grid.Column="0" Grid.Row="1" FontSize="{DynamicResource SubheadingFontSize}" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryTextBrush}"/>
+		<Label Content="Appointments" Grid.Column="2" Grid.Row="1" FontSize="{DynamicResource SubheadingFontSize}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<Label Content="Tasks" Grid.Column="3" Grid.Row="1" FontSize="{DynamicResource SubheadingFontSize}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+		<!-- Goals content-->
+		<Grid Margin="10,10,10,10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+			<DataGrid x:Name="Top10Goals" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="Top10Goals_SelectionChanged" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Name" Width ="150*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Title}"/>
+
+					<!--ProgressBar-->
+					<DataGridTemplateColumn Header="Progress" Width="100*">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Vertical" Margin="5,5,5,5">
+									<ProgressBar Value="{Binding ProgressPercent}" Minimum="0" Maximum="{Binding TargetValue}" Height="10"/>
+									<TextBlock Text="{Binding ProgressPercent, StringFormat={}{0}%}" />
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding Unit}"/>
+										<TextBlock Text=" finished"/>
+									</StackPanel>
+
+								</StackPanel>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+				</DataGrid.Columns>
+
+			</DataGrid>
+
+
+		</Grid>
+		<Button Content=" ... More Goal Details ... " Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" FontSize="{DynamicResource SmallFontSize}" FontWeight="Bold" Click="Click_MoreGoals" Margin="2,2,2,2"/>
+		<Button Content="Add Goal+" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="{DynamicResource SmallFontSize}" Click="Click_AddGoals" Margin="2,2,2,2"/>
+
+		<!-- Appointments content-->
+		<Grid Grid.Column="2" Grid.Row="2" Margin="0,0,10,0" Grid.RowSpan="1" VerticalAlignment="Stretch">
+			<Grid.RowDefinitions>
+				<RowDefinition Height= "2*" />
+				<RowDefinition Height="*" />
+
+			</Grid.RowDefinitions>
+			<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform">
+				<Calendar x:Name="AppointmentsCalendar" FontSize="{DynamicResource BodyFontSize}" SelectionMode="MultipleRange" />
+			</Viewbox>
+			<!--Label Grid.Row="1" Content="Appointment 1: Date xx-xx-xxxx" /-->
+
+			<DataGrid x:Name="Top3Appointments" Grid.Row="1" Margin="10,10,10,10" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="Top3Appointments_SelectionChanged" VerticalAlignment="Stretch" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Name" Width ="135*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Title}"/>
+					<DataGridTextColumn Header="Start Date" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding StartDateTime}"/>
+					<DataGridTextColumn Header="End Date" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding EndDateTime}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</Grid>
+		<Button Content=" ... More Appointment Details ... " Grid.Row="3" Grid.Column="2" FontSize="{DynamicResource SmallFontSize}" FontWeight="Bold"  Click="Click_MoreAppointments" Margin="2,2,2,2"/>
+		<Button Content="Add Appointment+" Grid.Row="4" Grid.Column="2" FontSize="{DynamicResource SmallFontSize}" FontWeight="Bold" Click="Click_AddAppointment" Margin="2,2,2,2"/>
+
+		<!-- Tasks content-->
+		<Grid Grid.Column="3" Grid.Row="2" Margin="0,0,0,0" >
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="1*" />
+			</Grid.RowDefinitions>
+
+			<Label Content="Daily Tasks" Grid.Row="0" Grid.Column="0" FontWeight="Bold"  Foreground="{DynamicResource SecondaryTextBrush}" FontSize="{DynamicResource SubheadingFontSize}"/>
+			<DataGrid x:Name="TopDailyTasks" Grid.Row="1" Grid.RowSpan="3" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="Top3DailyTasks_SelectionChanged" Margin="10,10,10,10" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Name" Width ="135*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Title}"/>
+					<DataGridTextColumn Header="Day" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding PreferredDay}"/>
+					<DataGridTextColumn Header="Duration" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Duration}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+
+			<Label Content="Chores Tasks" Grid.Row="4" Grid.Column="0" FontWeight="Bold"  Foreground="{DynamicResource SecondaryTextBrush}" FontSize="{DynamicResource SubheadingFontSize}" />
+			<DataGrid x:Name="TopChores" Grid.Row="5" Grid.RowSpan="3" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="TopChores_SelectionChanged" Margin="10,10,10,10" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Name" Width ="135*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Title}"/>
+					<DataGridTextColumn Header="Day" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding PreferredDay}"/>
+					<DataGridTextColumn Header="Duration" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Duration}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+
+			<Label Content="Fun Activities" Grid.Row="8" Grid.Column="0" FontWeight="Bold"  Foreground="{DynamicResource SecondaryTextBrush}" FontSize="{DynamicResource SubheadingFontSize}" />
+			<DataGrid x:Name="TopFunActivities" Grid.Row="9" Grid.RowSpan="3" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="TopFunActivities_SelectionChanged" Margin="10,10,10,10" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Name" Width ="135*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Title}"/>
+					<DataGridTextColumn Header="Day" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding PreferredDay}"/>
+					<DataGridTextColumn Header="Duration" Width=" 65*" FontSize="{DynamicResource SmallFontSize}" Binding="{Binding Duration}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</Grid>
+		<Button Content=" ... More Task Details ... " Grid.Row="3" Grid.Column="3" FontSize="{DynamicResource SmallFontSize}" FontWeight="Bold" Click="Click_MoreTasks" Margin="2,2,2,2"/>
+		<Button Content="Add Task+" Margin="2,2,2,2" Grid.Row="4" Grid.Column="3" FontSize="{DynamicResource SmallFontSize}" FontWeight="Bold" Click="Click_AddTask"/>
+	</Grid>
+</Page>

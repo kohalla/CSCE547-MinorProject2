@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../DataLayer/DataLayer.csproj" Id="332bde19-5caf-41da-8241-39790b67b198" />
+  <Project Path="TaskScheduler.csproj" Id="abfcba18-ed9f-4346-a302-1f2bf8e2c6a7" />
+</Solution>

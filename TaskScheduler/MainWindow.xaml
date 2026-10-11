@@ -1,0 +1,48 @@
+﻿<Window x:Class="TaskScheduler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskScheduler"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="439" Width="792"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem x:Name="mnu_Users" Header="User" HorizontalAlignment="Center" FontSize="{DynamicResource BodyFontSize}" Margin="0.2,0.2,0.2,0.2" >
+				<MenuItem Header="Manage Standard Users" IsEnabled="False" />
+				<MenuItem Header="_jmartinez" Click="mnuUser_Click_JM"/>
+				<MenuItem Header="_pkim" Click="mnuUser_Click_PK"/>
+				<MenuItem Header="_tbrooks" Click="mnuUser_Click_TB"/>
+
+					<Separator />
+                <MenuItem Header="Manage Admin Users" IsEnabled="False"/>
+				<MenuItem Header="_admin" Click="mnuUser_Click_Admin"/>
+				<MenuItem Header="_rpatel" Click="mnuUser_Click_RP"/>
+			</MenuItem>
+			
+            <MenuItem x:Name="mnu_Pages" Header="Pages" HorizontalAlignment="Center" FontSize="{DynamicResource BodyFontSize}" Margin="0.2,0.2,0.2,0.2" >
+                <MenuItem Header="_View Goals" Click="mnuPage_Click_ViewGoals"/>
+                <MenuItem Header="_Add Goals" Click="mnuPage_Click_AddGoals"/>
+				<MenuItem Header="_Edit Goals" Click="mnuPage_Click_EditGoals"/>
+                <Separator />
+                <MenuItem Header="_View Tasks" Click="mnuPage_Click_ViewTasks"/>
+				<MenuItem Header="_Add Tasks" Click="mnuPage_Click_AddTask"/>
+				<MenuItem Header="_Edit Tasks" Click="mnuPage_Click_EditTask"/>
+                <Separator />
+                <MenuItem Header="_View Appointments" Click="mnuPage_Click_ViewAppointments"/>
+				<MenuItem Header="_Add Appointments" Click="mnuPage_Click_AddAppointments"/>
+				<MenuItem Header="_Edit Appointments" Click="mnuPage_Click_EditAppointments"/>
+				<Separator />
+				<MenuItem x:Name="mnuPage_Admin" Header="_Admin Page" Click="mnuPage_Click_AdminPage" Visibility="Collapsed"/>
+			</MenuItem>
+            <MenuItem Header="_Settings" HorizontalAlignment="Center" FontSize="{DynamicResource BodyFontSize}" Margin="0.2,0.2,0.2,0.2" >
+                <MenuItem Header="_User Settings" Click="mnuPage_Click_UserSettings"/>
+            </MenuItem>
+        </Menu>
+        <TextBox AcceptsReturn="True" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}" />
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Visible" Background="Transparent" />
+    </DockPanel>
+
+</Window>

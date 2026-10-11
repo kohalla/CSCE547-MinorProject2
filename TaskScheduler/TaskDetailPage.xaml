@@ -1,0 +1,79 @@
+﻿<Page x:Class="TaskScheduler.TaskDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskScheduler"
+      mc:Ignorable="d" 
+
+	  d:DesignHeight="450" d:DesignWidth="800"
+	  Title="TaskDetailPage"
+	  Background="{DynamicResource WindowBackgroundBrush}"
+	  Foreground="{DynamicResource PrimaryTextBrush}">
+
+	<Grid x:Name="detailGrid" TextBox.TextChanged="OnTextboxTextChanged" Background="Transparent">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="1*" />
+
+		</Grid.RowDefinitions>
+
+		<Label Content="Task Details" FontSize="{DynamicResource HeadingFontSize}" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Center" Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+		<Label Content="Task Category: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="1" Grid.Column="2" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<ComboBox x:Name="cmbTaskCategory" Grid.Row="1" Grid.Column="3" DisplayMemberPath="CategoryName" SelectedValuePath="CategoryID" Margin="10,10,10,5"/>
+
+		<Label Content="Task Priority: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="2" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<TextBox x:Name="txtPriority" IsReadOnly ="False" Grid.Row="2" Grid.Column="1" Margin="10,10,10,5" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+		<Label Content="Task: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="1" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<TextBox x:Name="txtTaskTitle" IsReadOnly ="False" Grid.Row="1" Grid.Column="1" Margin="10,5,10,5" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}" />
+
+		<Label Content="Task details: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="3" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<TextBox x:Name="txtDetail" IsReadOnly ="False" Grid.Row="3" Grid.Column="1" Margin="10,5,10,5" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}" />
+
+		<Label Content="Task Frequency: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="3" Grid.Column="2" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<!--TextBox x:Name="txtFequency" IsReadOnly ="False" Grid.Row="3" Grid.Column="3" /-->
+		<ComboBox x:Name="cmbTaskFrequency" Grid.Row="3" Grid.Column="3" Margin="10,5,10,5" />
+
+		<Label Content="Related Goal: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="2" Grid.Column="2" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<ComboBox x:Name="cmbGoal" Grid.Row="2" Grid.Column="3" DisplayMemberPath="Title" SelectedValuePath="GoalID" Margin="10,5,10,5"/>
+
+		<Label Content="Time Frame: " FontSize="{DynamicResource BodyFontSize}" FontWeight="Bold" Margin="0,20,0,0" Grid.Row="4" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+		<Label Content="Duration (Minutes): " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="4" Grid.Column="2" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<TextBox x:Name="txtDuration" IsReadOnly ="False" Grid.Row="4" Grid.Column="3" Margin="10,5,10,5" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+		<Label Content="Preferred Day: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="5" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<!--TextBox x:Name="txtDay" IsReadOnly ="False" Grid.Row="5" Grid.Column="1"/-->
+		<ComboBox x:Name="cmbTaskPreferredDay" Grid.Row="5" Grid.Column="1" Margin="10,5,10,5" />
+
+		<Label Content="Preferred Time: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="5" Grid.Column="2" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<TextBox x:Name="txtTime" IsReadOnly ="False" Grid.Row="5" Grid.Column="3" Margin="10,5,0,5" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+		<Label Content="Task State: " FontSize="{DynamicResource BodyFontSize}" FontWeight="Bold" Margin="0,20,0,0" Grid.Row="7" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<Label Content="Flexibility:" FontSize="{DynamicResource SmallFontSize}"  Margin="0,0,0,0" Grid.Row="8" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<ComboBox x:Name="cmbFlexibility" Grid.Row="8" Grid.Column="1" Margin="10,5,10,5" />
+
+		<Label Content="Status:" FontSize="{DynamicResource SmallFontSize}"  Margin="0,0,0,0" Grid.Row="8" Grid.Column="2" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<ComboBox x:Name="cmbStatus" Grid.Row="8" Grid.Column="3" Margin="10,5,10,9"/>
+
+		<Button x:Name="DeleteButton"  Content="Delete"  Grid.Row="9" Grid.Column="0"  Click="DeleteButton_Click"/>
+		<Button x:Name="CompleteButton"  Content="Mark Complete"  Grid.Row="9" Grid.Column="2"  Click="CompleteButton_Click"/>
+		<Button x:Name="SaveButton"  Content="Save" IsEnabled="False"  Grid.Row="9" Grid.Column="3"  Click="SaveButton_Click"/>
+	</Grid>
+</Page>

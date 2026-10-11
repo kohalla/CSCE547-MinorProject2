@@ -1,0 +1,74 @@
+﻿<Page x:Class="TaskScheduler.GoalDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskScheduler"
+      mc:Ignorable="d" 
+
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GoalDetailPage"
+      Background="{DynamicResource WindowBackgroundBrush}"
+      Foreground="{DynamicResource PrimaryTextBrush}">
+
+    <Grid TextBox.TextChanged="OnTextboxTextChanged" Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Goal Details" FontSize="{DynamicResource HeadingFontSize}" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="6" VerticalAlignment="Center" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		
+        <Label Content="Goal Catergory: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="1" Grid.Column="3" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<ComboBox x:Name="cmbGoalCategory" Grid.Row="1" Grid.Column="4" DisplayMemberPath="CategoryName" SelectedValuePath="CategoryID" Margin="10,10,10,5" Grid.ColumnSpan="2"/>
+		
+        <Label Content="Goal: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="1" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <TextBox x:Name="txtGoalTitle" IsReadOnly ="False" Grid.Row="1" Grid.Column="1" Margin="10,5,10,5" Grid.ColumnSpan="2" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+		
+        <Label Content="Goal details: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="2" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <TextBox x:Name="txtDetail" IsReadOnly ="False" Grid.Row="2" Grid.Column="1" Margin="10,5,10,5" Grid.ColumnSpan="2" TextWrapping="Wrap" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+		
+        <Label Content="Status:" FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="2" Grid.Column="3" Foreground="{DynamicResource SecondaryTextBrush}"/>
+		<ComboBox x:Name="cmbGoalStatus" Grid.Row="2" Grid.Column="4" Margin="10,5,10,5" Grid.ColumnSpan="2"/>
+
+        <Label Content="Time Frame: " FontSize="{DynamicResource BodyFontSize}" FontWeight="Bold" Margin="0,20,0,0" Grid.Row="4" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <Label Content="Start Date: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,0,0,0" Grid.Row="5" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <TextBox x:Name="txtStartDate" FontSize="{DynamicResource SmallFontSize}"  Margin="10,5,10,5" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+        <Label Content="End Date: " FontSize="{DynamicResource SmallFontSize}"  Margin="0,0,0,0" Grid.Row="5" Grid.Column="3" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <TextBox x:Name="txtEndDate" FontSize="{DynamicResource SmallFontSize}"  Margin="10,5,10,5" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+        <Label Content="Progress: " FontSize="{DynamicResource BodyFontSize}" FontWeight="Bold" Margin="0,20,0,0" Grid.Row="7" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <Label Content="Unit:" FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="7" Grid.Column="4" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <TextBox x:Name="txtUnit" FontSize="{DynamicResource SmallFontSize}"  Margin="10,5,10,5" Grid.Row="7" Grid.Column="5" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+        <Label Content="Percent Complete:" FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="8" Grid.Column="0" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <TextBox x:Name="txtPercentComplete" FontSize="{DynamicResource SmallFontSize}"  Margin="10,5,10,5" Grid.Row="8" Grid.Column="1" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+		
+		<ProgressBar x:Name="progressBar" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,10,5,10"  Value="{Binding ProgressPercent}" Minimum="0" Maximum="{Binding TargetValue}"/>
+		
+        <Label Content="Target:" FontSize="{DynamicResource SmallFontSize}"  Margin="0,20,0,0" Grid.Row="8" Grid.Column="4" Foreground="{DynamicResource SecondaryTextBrush}"/>
+        <TextBox x:Name="txtTarget" FontSize="{DynamicResource SmallFontSize}" Margin="10,5,10,5" Grid.Row="8" Grid.Column="5" Background="{DynamicResource SurfaceBrush}" Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+		<Button x:Name="DeleteButton"  Content="Delete"  Grid.Row="9" Grid.Column="0"  Click="DeleteButton_Click"/>
+
+		<Button x:Name="SaveButton"  Content="Save" IsEnabled="False"  Grid.Row="9" Grid.Column="5"  Click="SaveButton_Click"/>
+
+	</Grid>
+</Page>

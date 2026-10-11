@@ -1,0 +1,249 @@
+﻿ <!--DarkTheme.xaml (Moonlight Glow — deep navy background, cool cyan / violet glow accents)-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:conv="clr-namespace:TaskScheduler.Converters">
+	<!-- Colors (green + black scheme, tuned for legibility) -->
+	<Color x:Key="WindowBackgroundColor">#0c2521</Color> <!-- almost-black with a hint of green -->
+	<Color x:Key="SurfaceColor">#232B2B</Color> <!-- slightly lighter panel background -->
+	<Color x:Key="PrimaryTextColor">#FFFFFFFF</Color> <!-- bright white for max contrast -->
+	<Color x:Key="SecondaryTextColor">#FFBFDCCB</Color> <!-- softer green-gray for secondary text -->
+	<Color x:Key="AccentColor">#FF39D353</Color> <!-- vivid green accent -->
+	<Color x:Key="Accent2Color">#FF6EEB9A</Color> <!-- lighter green accent -->
+	<Color x:Key="SecondarySurfaceColor">#FFBFDCCB</Color>
+
+	<!-- Font size tokens (will be updated at runtime for responsive scaling) -->
+	<sys:Double x:Key="HeadingFontSize">24</sys:Double>
+	<sys:Double x:Key="SubheadingFontSize">18</sys:Double>
+	<sys:Double x:Key="BodyFontSize">14</sys:Double>
+	<sys:Double x:Key="SmallFontSize">12</sys:Double>
+	<!-- Calendar sizing tokens -->
+	<sys:Double x:Key="CalendarWidth">320</sys:Double>
+	<sys:Double x:Key="CalendarHeight">260</sys:Double>
+	<sys:Double x:Key="CalendarDayCellSize">36</sys:Double>
+	<sys:Double x:Key="CalendarDayCellPadding">4</sys:Double>
+	<Color x:Key="BorderColor">#FF0E2A18</Color> <!-- dark green border -->
+	<Color x:Key="HoverColor">#FF0A2A18</Color> <!-- subtle hover darker green -->
+	<Color x:Key="SelectionColor">#FF1B4F2B</Color> <!-- selection (darker green) -->
+	<Color x:Key="DisabledColor">#FF31403A</Color>
+	<Color x:Key="ErrorColor">#FFFF6B6B</Color>
+	<Color x:Key="SuccessColor">#FF57F28A</Color>
+
+	<!-- Header and navigation colors -->
+	<Color x:Key="HeaderBackgroundColor">#003A00</Color> <!-- dark green for datagrid headers -->
+	<Color x:Key="HeaderForegroundColor">#FFFFFFFF</Color>
+
+	<Color x:Key="NavBackgroundColor">#93c572</Color> <!-- light mint/green for nav bar -->
+	<Color x:Key="NavForegroundColor">#FF08321B</Color> <!-- dark green text on nav -->
+	<Color x:Key="NavButtonBackgroundColor">#FFF5F7F6</Color> <!-- light grey/white buttons -->
+	<Color x:Key="NavButtonForegroundColor">#FF2E3E36</Color> <!-- dark grey/green text on buttons -->
+	<Color x:Key="NavButtonBorderColor">#FFCBDACF</Color>
+	<!-- Brushes -->
+	<SolidColorBrush x:Key="WindowBackgroundBrush" Color="{DynamicResource WindowBackgroundColor}"/>
+	<SolidColorBrush x:Key="SurfaceBrush" Color="{DynamicResource SurfaceColor}"/>
+	<SolidColorBrush x:Key="SecondaryBrush" Color="{DynamicResource SecondarySurfaceColor}"/>
+	<SolidColorBrush x:Key="PrimaryTextBrush" Color="{DynamicResource PrimaryTextColor}"/>
+	<SolidColorBrush x:Key="SecondaryTextBrush" Color="{DynamicResource SecondaryTextColor}"/>
+	<SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
+	<SolidColorBrush x:Key="Accent2Brush" Color="{DynamicResource Accent2Color}"/>
+	<SolidColorBrush x:Key="BorderBrush" Color="{DynamicResource BorderColor}"/>
+	<SolidColorBrush x:Key="HoverBrush" Color="{DynamicResource HoverColor}"/>
+	<SolidColorBrush x:Key="SelectionBrush" Color="{DynamicResource SelectionColor}"/>
+	<SolidColorBrush x:Key="DisabledBrush" Color="{DynamicResource DisabledColor}"/>
+	<SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}"/>
+	<SolidColorBrush x:Key="SuccessBrush" Color="{DynamicResource SuccessColor}"/>
+
+	<!-- Brushes for headers and navigation -->
+	<SolidColorBrush x:Key="HeaderBackgroundBrush" Color="{DynamicResource HeaderBackgroundColor}"/>
+	<SolidColorBrush x:Key="HeaderForegroundBrush" Color="{DynamicResource HeaderForegroundColor}"/>
+	<SolidColorBrush x:Key="NavBackgroundBrush" Color="{DynamicResource NavBackgroundColor}"/>
+	<SolidColorBrush x:Key="NavForegroundBrush" Color="{DynamicResource NavForegroundColor}"/>
+	<SolidColorBrush x:Key="NavButtonBackgroundBrush" Color="{DynamicResource NavButtonBackgroundColor}"/>
+	<SolidColorBrush x:Key="NavButtonForegroundBrush" Color="{DynamicResource NavButtonForegroundColor}"/>
+	<SolidColorBrush x:Key="NavButtonBorderBrush" Color="{DynamicResource NavButtonBorderColor}"/>
+
+	<!-- ComboBox background: use solid secondary surface color -->
+	<SolidColorBrush x:Key="ComboBoxBackgroundBrush" Color="{DynamicResource SecondarySurfaceColor}" />
+	
+
+	<!-- DataGrid styling to improve legibility -->
+	<Style TargetType="DataGrid">
+		<Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+		<Setter Property="RowBackground" Value="Transparent"/>
+		<Setter Property="AlternatingRowBackground" Value="{DynamicResource WindowBackgroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+		<Setter Property="GridLinesVisibility" Value="None"/>
+		<Setter Property="FontSize" Value="{DynamicResource SmallFontSize}"/>
+		
+	</Style>
+	
+	
+
+	<!-- Global control defaults -->
+	<!-- Labels: remove background and center content -->
+	<Style TargetType="Label">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+	</Style>
+
+	
+	
+
+	<!-- ComboBoxes: center text and use a secondary surface background -->
+	<!-- Converter is registered centrally in App.xaml to avoid duplicate resource keys -->
+	<!-- ComboBox control template to ensure the Background brush is visible in the control visuals -->
+	<ControlTemplate x:Key="ComboBoxControlTemplate" TargetType="ComboBox">
+		<Grid>
+			<Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" Padding="2">
+				<Grid>
+					<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4,0,25,0">
+						<ContentPresenter.Content>
+							<MultiBinding Converter="{x:Static conv:ComboBoxSelectionTextConverter.Instance}">
+								<Binding Path="SelectedItem" RelativeSource="{RelativeSource TemplatedParent}" />
+								<Binding Path="DisplayMemberPath" RelativeSource="{RelativeSource TemplatedParent}" />
+							</MultiBinding>
+						</ContentPresenter.Content>
+					</ContentPresenter>
+					<ToggleButton x:Name="ToggleButton" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press" HorizontalAlignment="Right" Width="20" Margin="0">
+						<Path Data="M 0 0 L 4 4 L 8 0 Z" Fill="{TemplateBinding Foreground}" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</ToggleButton>
+				</Grid>
+			</Border>
+			<Popup x:Name="Popup" Placement="Bottom" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
+				<Border Background="#FFFFFFFF" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="3">
+					<ScrollViewer Margin="0" CanContentScroll="True">
+						<ItemsPresenter />
+					</ScrollViewer>
+				</Border>
+			</Popup>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="HasItems" Value="false">
+				<Setter TargetName="Popup" Property="Visibility" Value="Collapsed" />
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="false">
+				<Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<Style TargetType="ComboBox">
+		<Setter Property="Background" Value="{DynamicResource ComboBoxBackgroundBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBrush}" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Template" Value="{StaticResource ComboBoxControlTemplate}" />
+	</Style>
+	<Style TargetType="ComboBoxItem">
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+	</Style>
+
+	<Style TargetType="DataGridRow">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+		<Style.Triggers>
+			<Trigger Property="IsSelected" Value="True">
+				<Setter Property="Background" Value="{DynamicResource SelectionBrush}"/>
+				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+	<!-- Calendar basic styling -->
+	<Style TargetType="Calendar">
+		<Setter Property="Background" Value="{DynamicResource SecondaryBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+	</Style>
+	<Style TargetType="CalendarButton">
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style TargetType="CalendarDayButton">
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+		<Setter Property="FontSize" Value="{DynamicResource SmallFontSize}"/>
+		<Setter Property="Padding" Value="{DynamicResource CalendarDayCellPadding}"/>
+		<Setter Property="Width" Value="{DynamicResource CalendarDayCellSize}"/>
+		<Setter Property="Height" Value="{DynamicResource CalendarDayCellSize}"/>
+		<Setter Property="MinWidth" Value="{DynamicResource CalendarDayCellSize}"/>
+		<Setter Property="MinHeight" Value="{DynamicResource CalendarDayCellSize}"/>
+		<Style.Triggers>
+			<Trigger Property="IsInactive" Value="True">
+				<Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
+				<Setter Property="Opacity" Value="0.9"/>
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{DynamicResource HoverBrush}"/>
+				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+			</Trigger>
+			<Trigger Property="IsSelected" Value="True">
+				<Setter Property="Background" Value="{DynamicResource SelectionBrush}"/>
+				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<!-- DataGrid column header styling -->
+	<Style TargetType="DataGridColumnHeader">
+		<Setter Property="Background" Value="{DynamicResource HeaderBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource HeaderForegroundBrush}"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="Padding" Value="6,4"/>
+		<Setter Property="FontSize" Value="{DynamicResource BodyFontSize}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+		<Setter Property="BorderThickness" Value="0,0,0,1"/>
+	</Style>
+
+	<!-- Navigation (Menu) styling -->
+	<Style TargetType="Menu">
+		<Setter Property="Background" Value="{DynamicResource NavBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource NavForegroundBrush}"/>
+	</Style>
+
+	<Style TargetType="MenuItem">
+		<Setter Property="Background" Value="{DynamicResource NavButtonBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource NavButtonForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource NavButtonBorderBrush}"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="Padding" Value="8,4"/>
+		<Setter Property="Margin" Value="2,0,2,0"/>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{DynamicResource Accent2Brush}"/>
+				<Setter Property="Foreground" Value="{DynamicResource NavButtonForegroundBrush}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<!-- Basic styles -->
+	<Style TargetType="Window">
+		<Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+	</Style>
+	<Style TargetType="Button">
+		<Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+		<Setter Property="Padding" Value="8,4"/>
+		<Setter Property="Margin" Value="4"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="4" Padding="{TemplateBinding Padding}">
+						<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{DynamicResource HoverBrush}"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource Accent2Brush}"/>
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="False">
+				<Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+</ResourceDictionary>
